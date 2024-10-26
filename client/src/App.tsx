@@ -6,7 +6,6 @@ import {
   Route,
 } from 'react-router-dom';
 import RootLayout from './components/layout/RootLayout';
-import { loader as homeLoader } from './components/pages/Home';
 import Loader from './components/common/Loader/Loader';
 import { lazy, Suspense } from 'react';
 import NotFoundPage from './components/pages/NotFoundPage';
@@ -34,7 +33,7 @@ const Router = createBrowserRouter(
         </Suspense>
       }
     >
-      <Route index element={<HomePage />} loader={homeLoader} />
+      <Route index element={<HomePage />} />
       <Route path='home' element={<HomePage />} />
       <Route path='shop' element={<ShopPage />} />
       <Route path='product/:productId' element={<ProductPage />} />

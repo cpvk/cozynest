@@ -1,10 +1,9 @@
 import cloudinary from 'cloudinary';
 import dotenv from 'dotenv';
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../lib/prisma';
 import { z } from 'zod';
 
-const prisma = new PrismaClient();
 
 dotenv.config();
 

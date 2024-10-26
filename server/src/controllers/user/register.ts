@@ -1,11 +1,10 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
-import { PrismaClient, Prisma } from '@prisma/client';
+import prisma from '../../lib/prisma';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
 
-const prisma = new PrismaClient();
 
 const UserValidationSchema = z.object({
   username: z.string().min(1),

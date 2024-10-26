@@ -1,10 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import 'dotenv/config';
-import { PrismaClient } from '@prisma/client';
+import prisma from '../lib/prisma';
 import { CustomeRequests } from '../types/request';
 
-const prisma = new PrismaClient();
 
 const authenticateUser = async (
   req: CustomeRequests,

@@ -1,6 +1,6 @@
 import { Response } from 'express';
 import { CustomeRequests } from '../../types/request';
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../lib/prisma';
 import { string, z } from 'zod';
 
 const wishlistInput = z.object({
@@ -10,7 +10,6 @@ const wishlistInput = z.object({
 
 type WishlistInputSchema = z.infer<typeof wishlistInput>;
 
-const prisma = new PrismaClient();
 
 export const addItemToWishlist = async (
   req: CustomeRequests,

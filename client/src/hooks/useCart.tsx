@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { AxiosResponse } from 'axios';
 import { authState } from '../store/auth';
@@ -32,16 +32,17 @@ export const useCart = () => {
 
   useEffect(() => {
     setCartsTotal(calculateTotalPrice(cart));
-  }, [cart]);
+  }, [cart, setCartsTotal]);
 
   const saveCartToLocalStorage = (cartData: CartItem[]) => {
     localStorage.setItem('cartData', JSON.stringify(cartData));
   };
 
-  const fetchCartData = async () => {
+  const isAuthenticated = auth.isAuthenticated;
+  const fetchCartData = useCallback(async () => {
     try {
       let cartData: CartItem[] = [];
-      if (auth.isAuthenticated) {
+      if (isAuthenticated) {
         const response = await axiosInstance.get('/cart');
         cartData = response.data.cartItems;
       } else {
@@ -53,7 +54,7 @@ export const useCart = () => {
     } catch (error) {
       console.error(error);
     }
-  };
+  }, [isAuthenticated, setCart, setCartsTotal]);
 
   const handleCartUpdate = async (action: CartAction) => {
     setLoading(true);

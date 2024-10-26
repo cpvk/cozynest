@@ -1,7 +1,7 @@
 import BrowseCard from '../../common/Cards/BrowseCard';
-import LivingRoomImage from '/src/assets/images/BrowseRangeImages/livingimage.png';
-import DiningRoomImage from '/src/assets/images/BrowseRangeImages/diningimage.png';
-import BedRoomImage from '/src/assets/images/BrowseRangeImages/bedroomimage.png';
+import LivingRoomImage from '../../../assets/images/BrowseRangeImages/livingimage.jpg';
+import DiningRoomImage from '../../../assets/images/BrowseRangeImages/diningimage.jpg';
+import BedRoomImage from '../../../assets/images/BrowseRangeImages/bedroomimage.jpg';
 import Wrapper from '../../common/UI/Wrapper';
 
 const BrowseRangeProductCategory = () => {

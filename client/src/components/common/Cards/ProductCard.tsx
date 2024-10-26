@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { formatPrice } from '../../../utils/format';
 
 const ProductCard = ({
   productName,
@@ -14,12 +14,21 @@ const ProductCard = ({
   hoverEffect?: boolean;
 }) => {
   return (
-    <motion.div
-      className='cursor-pointer bg-slate-100'
-      whileHover={{ scale: hoverEffect ? 1.02 : 1 }}
+    <div
+      className={`cursor-pointer bg-slate-100 transition-transform duration-200 ${
+        hoverEffect ? 'hover:scale-[1.02]' : ''
+      }`}
     >
       <div className='space-y-2'>
-        <img src={imageUrl} alt={`${productName} Image`} />
+        <img
+          src={imageUrl}
+          alt={`${productName} Image`}
+          loading='lazy'
+          decoding='async'
+          width={512}
+          height={384}
+          className='aspect-[4/3] w-full object-cover'
+        />
       </div>
       <div className='px-4 pb-4 space-y-1'>
         <div className='flex justify-between items-center'>
@@ -27,12 +36,12 @@ const ProductCard = ({
             {productName}
           </div>
         </div>
-        <div className='text-sm text-font-color2 font-semibold'>
+        <div className='line-clamp-2 text-sm text-font-color2 font-semibold'>
           {description}
         </div>
-        <div className='font-semibold'>Rs. {price}</div>
+        <div className='font-semibold'>Rs. {formatPrice(price)}</div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

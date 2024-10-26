@@ -1,8 +1,7 @@
 import { Response } from 'express';
 import { CustomeRequests } from '../../types/request';
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../lib/prisma';
 
-const prisma = new PrismaClient();
 
 export const getAllItemsFromUserCart = async (
   req: CustomeRequests,

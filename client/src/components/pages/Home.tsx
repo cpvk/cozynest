@@ -1,4 +1,3 @@
-import { redirect } from 'react-router-dom';
 import Banner from '../Home/Banner/Banner';
 import BrowseRange from '../Home/BrowseRange/BrowseRange';
 import { useEffect } from 'react';
@@ -18,7 +17,4 @@ const Home = () => {
   );
 };
 
-export const loader = () => {
-  return redirect('/home');
-};
 export default Home;

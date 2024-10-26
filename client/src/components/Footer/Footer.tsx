@@ -13,7 +13,7 @@ const Footer = () => {
               to='/home'
               className='text-xl md:text-2xl md:pr-10 font-bold md:pt-2'
             >
-              Furniro
+              CozyNest
             </Link>
             <div className='flex justify-between md:grid md:grid-cols-2 md:col-span-2'>
               <ul className='text-font-color1 font-medium space-y-4'>
@@ -52,11 +52,8 @@ const Footer = () => {
           <SeparatorLine />
           <div className='sm:flex sm:items-center sm:justify-between'>
             <span className='text-sm text-gray-500 sm:text-center'>
-              © 2024{' '}
-              <a href='https://flowbite.com/' className='hover:underline'>
-                Funiro
-              </a>
-              . All Rights Reserved.
+              © 2024 <span className='hover:underline'>CozyNest</span>. All
+              Rights Reserved.
             </span>
           </div>
         </div>

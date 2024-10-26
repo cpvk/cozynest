@@ -4,30 +4,31 @@ import WishlistItem from './WishlistItem';
 import { useWishlist } from '../../hooks/useWishlist';
 import WishlistIsEmpty from './WishlistIsEmpty';
 import Wrapper from '../common/UI/Wrapper';
-import { Link } from 'react-router-dom';
 
 const WishlistItems = () => {
   const { deleteWishlistItem } = useWishlist();
   const wishlist = useRecoilValue(wishlistStore);
-  console.log(wishlist);
-  if (wishlist === undefined) {
+
+  if (!wishlist || wishlist.length === 0) {
     return <WishlistIsEmpty />;
   }
   return (
     <Wrapper>
-      {wishlist.map((item) => (
-        <Link to={`/product/${item.product.id}`} key={item.id}>
+      <div className='grid grid-cols-1 gap-6 py-10 sm:grid-cols-2 lg:grid-cols-3'>
+        {wishlist.map((item) => (
           <WishlistItem
+            key={item.id}
+            productId={item.product.id}
             productName={item.product.productName}
             imageUrl={item.product.imageUrl}
             price={item.product.price}
             description={item.product.description}
             wishlistItemId={item.id}
-            itemIsInStock={item.product.stockQuantity > 0 ? true : false}
+            itemIsInStock={item.product.stockQuantity > 0}
             deleteWishlistItem={deleteWishlistItem}
           />
-        </Link>
-      ))}
+        ))}
+      </div>
     </Wrapper>
   );
 };

@@ -1,6 +1,6 @@
 import { Response } from 'express';
 import { CustomeRequests } from '../../types/request';
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../lib/prisma';
 import { number, string, z } from 'zod';
 
 const cartInput = z.object({
@@ -11,7 +11,6 @@ const cartInput = z.object({
 
 type CartInputSchema = z.infer<typeof cartInput>;
 
-const prisma = new PrismaClient();
 
 export const addItemToCart = async (req: CustomeRequests, res: Response) => {
   const { productId, quantity } = req.body;

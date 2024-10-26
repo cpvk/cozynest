@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import { DeleteIcon } from '../../utils/icons';
 import ProductCard from '../common/Cards/ProductCard';
-import { motion } from 'framer-motion';
 
 const WishlistItem = ({
+  productId,
   productName,
   imageUrl,
   description,
@@ -11,6 +12,7 @@ const WishlistItem = ({
   itemIsInStock,
   deleteWishlistItem,
 }: {
+  productId: string;
   productName: string;
   itemIsInStock: boolean;
   imageUrl: string;
@@ -29,22 +31,25 @@ const WishlistItem = ({
           <div className='absolute w-full h-full bg-black/20' />
         </div>
       )}
-      <motion.button
-        className='zoom-effect absolute right-3 bottom-5'
+      <button
+        type='button'
+        aria-label={`Remove ${productName} from wishlist`}
+        className='zoom-effect absolute right-3 bottom-5 z-10'
         onClick={() => {
           deleteWishlistItem(wishlistItemId);
         }}
-        whileTap={{ scale: 1 }}
       >
         <DeleteIcon />
-      </motion.button>
-      <ProductCard
-        productName={productName}
-        price={price}
-        description={description}
-        imageUrl={imageUrl}
-        hoverEffect={false}
-      />
+      </button>
+      <Link to={`/product/${productId}`}>
+        <ProductCard
+          productName={productName}
+          price={price}
+          description={description}
+          imageUrl={imageUrl}
+          hoverEffect={false}
+        />
+      </Link>
     </div>
   );
 };

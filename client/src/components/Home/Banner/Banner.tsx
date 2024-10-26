@@ -1,4 +1,4 @@
-import backDropImage from '../../../assets/images/homeMainImage.png';
+import backDropImage from '../../../assets/images/homeMainImage.jpg';
 import BannerBox from './BannerBox';
 
 const Banner = () => {
